@@ -29,10 +29,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   [self.manager setMetronomeModel:^MHCurriculumMetronomeModel *(MHCurriculumMetronomeModel *model) {
-       model.metronomeMetre([MHCurriculumMetronomeMetreModel createMetreWithNoteKind:4 andBeat:3]).metronomeBPM(120);
+    
+    [self.manager setMetronomeModel:^MHCurriculumMetronomeModel *(MHCurriculumMetronomeModel *model) {
+        
+       model.metronomeMetre([MHCurriculumMetronomeMetreModel createMetreWithBeat:2 andNoteKind:(quarterNote)]).metronomeBPM(120);
        return model;
-   }];
+    }];
 }
 
 - (IBAction)start:(id)sender {

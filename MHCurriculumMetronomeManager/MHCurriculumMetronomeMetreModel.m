@@ -17,10 +17,10 @@
 
 +(MHCurriculumMetronomeMetreModel *)defaultMetre
 {
-    return  [MHCurriculumMetronomeMetreModel createMetreWithNoteKind:quarterNote andBeat:quarterNote];
+    return [MHCurriculumMetronomeMetreModel createMetreWithBeat:quarterNote andNoteKind:quarterNote];
 }
 
-+(MHCurriculumMetronomeMetreModel *)createMetreWithNoteKind:(MHNoteKind )noteKind andBeat:(NSInteger)beat
++(MHCurriculumMetronomeMetreModel *)createMetreWithBeat:(NSInteger)beat andNoteKind:(MHNoteKind )noteKind
 {
     MHCurriculumMetronomeMetreModel *model=[[MHCurriculumMetronomeMetreModel alloc]init];
     

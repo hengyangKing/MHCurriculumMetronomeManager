@@ -14,7 +14,7 @@
     NSTimer *_metronomeTimer;
     NSInteger _count;
 }
-
+@property(nonatomic,assign,getter=isMetronomeOn)BOOL metronomeOn;
 @property(nonatomic,strong)MHCurriculumMetronomeModel *model;
 @property (strong, nonatomic) AVAudioPlayer *accentPlayer;
 @property (strong, nonatomic) AVAudioPlayer *soundPlayer;
@@ -24,10 +24,10 @@
 @implementation MHCurriculumMetronomeManager
 dispatch_source_t _timer ;
 - (void)dealloc {
-    [_accentPlayer stop];
+    [self stop];
     _accentPlayer = nil;
-    [_soundPlayer stop];
     _soundPlayer = nil;
+    _metronomeTimer=nil;
 }
 +(MHCurriculumMetronomeManager *)createCurriculumMetronomeManagerWithAccentUrl:(NSURL *)accentUrl andLightUrl:(NSURL *)lightUrl
 {
@@ -43,38 +43,49 @@ dispatch_source_t _timer ;
 -(void)setMetronomeModel:(MHCurriculumMetronomeModel *(^)(MHCurriculumMetronomeModel *model))metronomeModel
 {
     if (metronomeModel) {
-        [self stop];
-        self.model=metronomeModel(self.model);
+        metronomeModel(self.model);
     }
 }
-
 -(void)start
 {
-    
     self.metronomeOn = true;
-    NSTimeInterval metronomeTimeInterval=((240.0/(double)self.model.Beat))/(double)self.model.BPM;
-    
+    NSTimeInterval metronomeTimeInterval=((240.0/(double)self.model.NoteKind))/(double)self.model.BPM;
     _metronomeTimer = [NSTimer scheduledTimerWithTimeInterval:metronomeTimeInterval target:self selector:@selector(playMetronomeSound) userInfo:nil repeats:true];
     [_metronomeTimer fire];
+}
+-(void)playMetronomeSound
+{
+    
+    _count += 1;
+    if (_count == 1) {
+        [self.accentPlayer play];
+        if (self.metronomeBlock) {
+            self.metronomeBlock(YES);
+        }
+        
+    } else {
+        [self.soundPlayer play];
+        if (self.metronomeBlock) {
+            self.metronomeBlock(NO);
+        }
+        if (_count == self.model.Beat) {
+            _count = 0;
+        }
+    }
 }
 - (void)stop {
     self.metronomeOn = false;
     [_metronomeTimer invalidate];
     [self.accentPlayer stop];
     [self.soundPlayer stop];
+    _count=0;
 }
--(void)playMetronomeSound
+-(void)pause
 {
-    _count += 1;
-    if (_count == 1) {
-        [self.accentPlayer play];
-    } else {
-        [self.soundPlayer play];
-        if (_count == self.model.NoteKind) {
-            _count = 0;
-        }
-    }
+    [self.accentPlayer pause];
+    [self.soundPlayer pause];
 }
+
 -(void)soundOff
 {
     self.accentPlayer.volume=0;
@@ -96,12 +107,7 @@ dispatch_source_t _timer ;
 -(AVAudioPlayer *)accentPlayer
 {
     if (!_accentPlayer) {
-        
-        NSError *error;
-        _accentPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:self.accentURL error:&error];
-        if (error) {
-            NSLog(@"%@",error);
-        }
+        _accentPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:self.accentURL error:nil];
     }
     return _accentPlayer;
 }
@@ -109,13 +115,8 @@ dispatch_source_t _timer ;
 -(AVAudioPlayer *)soundPlayer
 {
     if (!_soundPlayer) {
-        NSError *error;
-        _soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:self.lightURL error:&error];
-        if (error) {
-            NSLog(@"%@",error);
-        }
+        _soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:self.lightURL error:nil];
     }
-    
     return _soundPlayer;
 }
 

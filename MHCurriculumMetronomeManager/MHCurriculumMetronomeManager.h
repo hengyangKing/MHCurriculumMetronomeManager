@@ -8,16 +8,26 @@
 
 #import <Foundation/Foundation.h>
 #import "MHCurriculumMetronomeModel.h"
-
+typedef void(^MHCurriculumMetronomeManagerBlock)(BOOL isAccent);
 
 @interface MHCurriculumMetronomeManager : NSObject
+
+
 
 +(MHCurriculumMetronomeManager *)createCurriculumMetronomeManagerWithAccentUrl:(NSURL *)accentUrl andLightUrl:(NSURL *)lightUrl;
 
 
 -(void)setMetronomeModel:(MHCurriculumMetronomeModel *(^)(MHCurriculumMetronomeModel *model))metronomeModel;
+@property(nonatomic,copy)MHCurriculumMetronomeManagerBlock metronomeBlock;
 
-@property(nonatomic,assign,getter=isMetronomeOn)BOOL metronomeOn;
 -(void)start;
+
 -(void)stop;
+
+-(void)pause;
+
+-(void)soundOff;
+
+-(void)soundOn;
+
 @end

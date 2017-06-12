@@ -19,9 +19,10 @@ typedef enum : NSUInteger {
 
 +(MHCurriculumMetronomeMetreModel *)defaultMetre;
 
-+(MHCurriculumMetronomeMetreModel *)createMetreWithNoteKind:(MHNoteKind )noteKind andBeat:(NSInteger)beat;
++(MHCurriculumMetronomeMetreModel *)createMetreWithBeat:(NSInteger)beat andNoteKind:(MHNoteKind )noteKind;
 
 -(MHNoteKind)NoteKind;
+
 -(NSInteger)Beat;
 
 @end
