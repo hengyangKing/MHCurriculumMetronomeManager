@@ -1,0 +1,16 @@
+PODS:
+  - MHCurriculumMetronomeManager (0.0.1)
+
+DEPENDENCIES:
+  - MHCurriculumMetronomeManager (from `../`)
+
+EXTERNAL SOURCES:
+  MHCurriculumMetronomeManager:
+    :path: ../
+
+SPEC CHECKSUMS:
+  MHCurriculumMetronomeManager: ead8b5b1816cd52d6aec5ae1694c1a89745f60f0
+
+PODFILE CHECKSUM: d5208eed867e43298ce824aa7acbf8577db413dc
+
+COCOAPODS: 1.1.1

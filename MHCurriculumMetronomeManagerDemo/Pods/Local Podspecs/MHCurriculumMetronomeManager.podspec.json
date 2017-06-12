@@ -1,0 +1,23 @@
+{
+  "name": "MHCurriculumMetronomeManager",
+  "version": "0.0.1",
+  "summary": "MHCurriculumMetronomeManager.",
+  "description": "a Metronome use for the musichome Curriculum",
+  "homepage": "https://github.com/hengyangKing/MHCurriculumMetronomeManager",
+  "license": "MIT",
+  "authors": {
+    "hengyangKing": "hengyangKing.yeah.net"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source": {
+    "git": "https://github.com/hengyangKing/MHCurriculumMetronomeManager.git",
+    "tag": "0.0.1"
+  },
+  "source_files": [
+    "MHCurriculumMetronomeManager",
+    "MHCurriculumMetronomeManager/**/*.{h,m}"
+  ],
+  "frameworks": "AVFoundation"
+}
