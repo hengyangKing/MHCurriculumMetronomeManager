@@ -112,7 +112,10 @@ dispatch_source_t _timer ;
 -(AVAudioPlayer *)accentPlayer
 {
     if (!_accentPlayer) {
-        _accentPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:self.accentURL error:nil];
+        NSError *error;
+        _accentPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:self.accentURL error:&error];
+        [[AVAudioSession sharedInstance]setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:(AVAudioSessionCategoryOptionDefaultToSpeaker) error:&error];
+        [[AVAudioSession sharedInstance] setActive:YES error:&error];
     }
     return _accentPlayer;
 }
@@ -120,9 +123,14 @@ dispatch_source_t _timer ;
 -(AVAudioPlayer *)soundPlayer
 {
     if (!_soundPlayer) {
-        _soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:self.lightURL error:nil];
+        NSError *error;
+        _soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:self.lightURL error:&error];
+        
+        [[AVAudioSession sharedInstance]setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:(AVAudioSessionCategoryOptionDefaultToSpeaker) error:&error];
+        [[AVAudioSession sharedInstance] setActive:YES error:&error];
     }
     return _soundPlayer;
 }
+
 
 @end
