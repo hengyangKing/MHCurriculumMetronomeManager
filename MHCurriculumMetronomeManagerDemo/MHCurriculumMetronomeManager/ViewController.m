@@ -32,7 +32,7 @@
     
     [self.manager setMetronomeModel:^MHCurriculumMetronomeModel *(MHCurriculumMetronomeModel *model) {
         
-       model.metronomeMetre([MHCurriculumMetronomeMetreModel createMetreWithBeat:2 andNoteKind:(quarterNote)]).metronomeBPM(120);
+       model.metronomeMetre([MHCurriculumMetronomeMetreModel createMetreWithBeat:4 andNoteKind:(eighthNote)]).metronomeBPM(120);
        return model;
     }];
 }
@@ -45,6 +45,9 @@
 - (IBAction)stop:(id)sender {
 
     [self.manager stop];
+}
+- (IBAction)pause:(UIButton *)sender {
+    [self.manager pause];
 }
 
 @end

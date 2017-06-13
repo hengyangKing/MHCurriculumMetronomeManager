@@ -48,14 +48,20 @@ dispatch_source_t _timer ;
 }
 -(void)start
 {
-    self.metronomeOn = true;
-    NSTimeInterval metronomeTimeInterval=((240.0/(double)self.model.NoteKind))/(double)self.model.BPM;
-    _metronomeTimer = [NSTimer scheduledTimerWithTimeInterval:metronomeTimeInterval target:self selector:@selector(playMetronomeSound) userInfo:nil repeats:true];
-    [_metronomeTimer fire];
+    if (self.metronomeOn&&_metronomeTimer) {
+       //暂停开启
+        [_metronomeTimer setFireDate:[NSDate date]];
+    }else{
+        //从新开启
+        self.metronomeOn = true;
+        NSTimeInterval metronomeTimeInterval=((240.0/(double)self.model.NoteKind))/(double)self.model.BPM;
+        _metronomeTimer = [NSTimer scheduledTimerWithTimeInterval:metronomeTimeInterval target:self selector:@selector(playMetronomeSound) userInfo:nil repeats:true];
+        [_metronomeTimer fire];
+
+    }
 }
 -(void)playMetronomeSound
 {
-    
     _count += 1;
     if (_count == 1) {
         [self.accentPlayer play];
@@ -82,8 +88,7 @@ dispatch_source_t _timer ;
 }
 -(void)pause
 {
-    [self.accentPlayer pause];
-    [self.soundPlayer pause];
+    [_metronomeTimer setFireDate:[NSDate distantFuture]];
 }
 
 -(void)soundOff
