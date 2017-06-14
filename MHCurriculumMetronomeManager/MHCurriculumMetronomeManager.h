@@ -12,12 +12,11 @@ typedef void(^MHCurriculumMetronomeManagerBlock)(BOOL isAccent);
 
 @interface MHCurriculumMetronomeManager : NSObject
 
-
-
 +(MHCurriculumMetronomeManager *)createCurriculumMetronomeManagerWithAccentUrl:(NSURL *)accentUrl andLightUrl:(NSURL *)lightUrl;
 
 
 -(void)setMetronomeModel:(MHCurriculumMetronomeModel *(^)(MHCurriculumMetronomeModel *model))metronomeModel;
+
 @property(nonatomic,copy)MHCurriculumMetronomeManagerBlock metronomeBlock;
 
 -(void)start;
