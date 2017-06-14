@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		091DA5A01EF04A44009C4E82 /* accent.caf in Resources */ = {isa = PBXBuildFile; fileRef = 091DA59E1EF04A44009C4E82 /* accent.caf */; };
+		091DA5A11EF04A44009C4E82 /* light.caf in Resources */ = {isa = PBXBuildFile; fileRef = 091DA59F1EF04A44009C4E82 /* light.caf */; };
 		09C404BE1EEE863F004B77C5 /* metronome1a.caf in Resources */ = {isa = PBXBuildFile; fileRef = 09C404BC1EEE863F004B77C5 /* metronome1a.caf */; };
 		09C404BF1EEE863F004B77C5 /* metronome1b.caf in Resources */ = {isa = PBXBuildFile; fileRef = 09C404BD1EEE863F004B77C5 /* metronome1b.caf */; };
 		09CA91E31EEE50D100DA34DD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA91E21EEE50D100DA34DD /* main.m */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		091DA59E1EF04A44009C4E82 /* accent.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = accent.caf; sourceTree = "<group>"; };
+		091DA59F1EF04A44009C4E82 /* light.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = light.caf; sourceTree = "<group>"; };
 		09C404BC1EEE863F004B77C5 /* metronome1a.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = metronome1a.caf; sourceTree = "<group>"; };
 		09C404BD1EEE863F004B77C5 /* metronome1b.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = metronome1b.caf; sourceTree = "<group>"; };
 		09CA91DE1EEE50D100DA34DD /* MHCurriculumMetronomeManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MHCurriculumMetronomeManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +73,8 @@
 		09CA91E01EEE50D100DA34DD /* MHCurriculumMetronomeManager */ = {
 			isa = PBXGroup;
 			children = (
+				091DA59E1EF04A44009C4E82 /* accent.caf */,
+				091DA59F1EF04A44009C4E82 /* light.caf */,
 				09C404BC1EEE863F004B77C5 /* metronome1a.caf */,
 				09C404BD1EEE863F004B77C5 /* metronome1b.caf */,
 				09CA91E41EEE50D100DA34DD /* AppDelegate.h */,
@@ -173,6 +179,8 @@
 			files = (
 				09CA91F11EEE50D100DA34DD /* LaunchScreen.storyboard in Resources */,
 				09C404BF1EEE863F004B77C5 /* metronome1b.caf in Resources */,
+				091DA5A11EF04A44009C4E82 /* light.caf in Resources */,
+				091DA5A01EF04A44009C4E82 /* accent.caf in Resources */,
 				09CA91EE1EEE50D100DA34DD /* Assets.xcassets in Resources */,
 				09CA91EC1EEE50D100DA34DD /* Main.storyboard in Resources */,
 				09C404BE1EEE863F004B77C5 /* metronome1a.caf in Resources */,

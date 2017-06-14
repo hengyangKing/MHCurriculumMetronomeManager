@@ -7,11 +7,7 @@
 //
 
 #import "MHCurriculumMetronomeMetreModel.h"
-@interface MHCurriculumMetronomeMetreModel()
-@property(nonatomic,assign)MHNoteKind noteKind;
 
-@property(nonatomic,assign)NSInteger beat;
-@end
 @implementation MHCurriculumMetronomeMetreModel
 
 
@@ -40,7 +36,7 @@
         _noteKind=noteKind;
     }
 }
-
+#pragma mark achieve setfun by self
 -(void)setBeat:(NSInteger)beat
 {
     if (beat) {
@@ -49,14 +45,6 @@
         _beat=wholeNote;
     }
 }
--(MHNoteKind)NoteKind
-{
-    return self.noteKind;
-}
 
--(NSInteger)Beat
-{
-    return self.beat;
-}
 
 @end

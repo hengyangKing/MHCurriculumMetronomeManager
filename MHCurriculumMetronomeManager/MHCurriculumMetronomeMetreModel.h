@@ -21,8 +21,8 @@ typedef enum : NSUInteger {
 
 +(MHCurriculumMetronomeMetreModel *)createMetreWithBeat:(NSInteger)beat andNoteKind:(MHNoteKind )noteKind;
 
--(MHNoteKind)NoteKind;
+@property(nonatomic,assign,readonly)MHNoteKind noteKind;
 
--(NSInteger)Beat;
+@property(nonatomic,assign,readonly)NSInteger beat;
 
 @end

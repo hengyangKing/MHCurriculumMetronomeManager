@@ -19,8 +19,8 @@
 -(MHCurriculumMetronomeManager *)manager
 {
     if (!_manager) {
-        NSURL *accentUrl = [NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]]pathForResource:@"metronome1a" ofType:@"caf"]];
-        NSURL *lightUrl = [NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]]pathForResource:@"metronome1b" ofType:@"caf"]];
+        NSURL *accentUrl = [NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]]pathForResource:@"accent" ofType:@"caf"]];
+        NSURL *lightUrl = [NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]]pathForResource:@"light" ofType:@"caf"]];
         _manager=[MHCurriculumMetronomeManager createCurriculumMetronomeManagerWithAccentUrl:accentUrl andLightUrl:lightUrl];
     }
     return _manager;
@@ -32,7 +32,7 @@
     
     [self.manager setMetronomeModel:^MHCurriculumMetronomeModel *(MHCurriculumMetronomeModel *model) {
         
-       model.metronomeMetre([MHCurriculumMetronomeMetreModel createMetreWithBeat:4 andNoteKind:(eighthNote)]).metronomeBPM(120);
+       model.metronomeMetre([MHCurriculumMetronomeMetreModel createMetreWithBeat:4 andNoteKind:(quarterNote)]).metronomeBPM(80);
        return model;
     }];
 }

@@ -12,9 +12,7 @@ static int MetronomeBPMMinValue   = 60;
 static int MetronomeBPMMaxValue   = 400;
 static int MetronomeBPMDefaultValue   = 80;
 @interface MHCurriculumMetronomeModel()
-@property(nonatomic,assign)NSInteger bpm;
 
-@property(nonatomic,strong)MHCurriculumMetronomeMetreModel *metre;
 
 @end
 @implementation MHCurriculumMetronomeModel
@@ -48,17 +46,12 @@ static int MetronomeBPMDefaultValue   = 80;
     };
 }
 
--(NSInteger)BPM
+-(void)setBpm:(NSInteger)bpm
 {
-    return self.bpm;
+    _bpm=bpm;
 }
--(NSInteger)NoteKind
+-(void)setMetre:(MHCurriculumMetronomeMetreModel *)metre
 {
-    return [self.metre NoteKind];
+    _metre=metre;
 }
--(NSInteger)Beat
-{
-    return [self.metre Beat];
-}
-
 @end

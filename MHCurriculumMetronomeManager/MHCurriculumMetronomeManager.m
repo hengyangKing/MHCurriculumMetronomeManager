@@ -54,7 +54,7 @@ dispatch_source_t _timer ;
     }else{
         //从新开启
         self.metronomeOn = true;
-        NSTimeInterval metronomeTimeInterval=((240.0/(double)self.model.NoteKind))/(double)self.model.BPM;
+        NSTimeInterval metronomeTimeInterval=((240.0/(double)self.model.metre.noteKind))/(double)self.model.bpm;
         _metronomeTimer = [NSTimer scheduledTimerWithTimeInterval:metronomeTimeInterval target:self selector:@selector(playMetronomeSound) userInfo:nil repeats:true];
         [_metronomeTimer fire];
 
@@ -74,7 +74,7 @@ dispatch_source_t _timer ;
         if (self.metronomeBlock) {
             self.metronomeBlock(NO);
         }
-        if (_count == self.model.Beat) {
+        if (_count == self.model.metre.beat) {
             _count = 0;
         }
     }

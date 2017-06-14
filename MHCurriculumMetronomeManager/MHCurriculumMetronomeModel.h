@@ -18,8 +18,9 @@
 //bpm
 @property(nonatomic,copy,readonly)MHCurriculumMetronomeModel *(^metronomeBPM)(NSInteger bpm);
 
--(NSInteger)BPM;
--(NSInteger)NoteKind;
--(NSInteger)Beat;
+
+@property(nonatomic,assign,readonly)NSInteger bpm;
+
+@property(nonatomic,strong,readonly)MHCurriculumMetronomeMetreModel *metre;
 
 @end
